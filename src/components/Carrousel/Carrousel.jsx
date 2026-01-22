@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	prev,
 	next,
-	setIndex,
+	setSelectedTimeControl,
 } from '../../DataManagement/reducers/timeControlsReducer';
 
 import { ALLOWED } from '../../App.jsx';
@@ -40,15 +40,31 @@ const Carrousel = () => {
 			: 0;
 
 	const current = ALLOWED[normalizedIndex] || ALLOWED[0];
+	const handleSelectTimeControl = (x) => {
+		dispatch(setSelectedTimeControl(x));
+		return;
+	};
 	const selectedTimeControl = useSelector(
 		(state) => state.timeControlsReducer.selectedTimeControl
 	);
 
 	return (
 		<div>
-			<button onClick={() => dispatch(prev())}>{'<'}</button>
-			Carrousel : {current}
-			<button onClick={() => dispatch(next())}>{'>'}</button>
+			<button
+				onClick={() => {
+					dispatch(prev())
+					handleSelectTimeControl(current);
+				}}>
+				{'<'}
+			</button>
+			Carrousel : {selectedTimeControl}
+			<button
+				onClick={() => {
+					dispatch(next())
+					handleSelectTimeControl(current);
+				}}>
+				{'>'}
+			</button>
 		</div>
 	);
 };
