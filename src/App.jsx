@@ -4,13 +4,6 @@ import List from './components/List/List.jsx';
 import { useData } from './hooks/useData.js';
 import { useSelector } from 'react-redux';
 
-export const ALLOWED = [
-	'live_bullet',
-	'live_blitz',
-	'live_rapid',
-	'daily',
-	'tactics',
-];
 
 export default function App() {
 	const { rankByTimeControl, isError, isLoading } = useData();
@@ -18,11 +11,15 @@ export default function App() {
 		(state) => state.timeControlsReducer.selectedTimeControl
 	);
 
+	const allowedTimeControls = useSelector(
+		(state) => state.timeControlsReducer.timeControls
+	);
+
 	const [selectedCarrousel, setSelectedCarrousel] = useState(false);
 
 	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
 	if (isError) return <>Erreur de chargement des données</>;
-	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
+	const filteredRank = rankByTimeControl.filter(([key]) => allowedTimeControls.includes(key));
 
 	return (
 		<main className='app'>

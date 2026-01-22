@@ -26,7 +26,6 @@ import {
 	reset,
 } from '../../DataManagement/reducers/timeControlsReducer';
 
-import { ALLOWED } from '../../App.jsx';
 import './styles.scss';
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -35,20 +34,17 @@ const Carrousel = () => {
 	const selectedIndex = useSelector(
 		(state) => state.timeControlsReducer?.selectedIndex ?? 0
 	);
-	const normalizedIndex =
-		Number.isInteger(selectedIndex) && selectedIndex >= 0
-			? selectedIndex % ALLOWED.length
-			: 0;
+	const allowedTimeControls = useSelector(
+		(state) => state.timeControlsReducer.timeControls
+	);
 
-	const current = ALLOWED[normalizedIndex] || ALLOWED[0];
+	const current = allowedTimeControls[selectedIndex] || allowedTimeControls[0];
 	const handleSelectTimeControl = (x) => {
 		dispatch(setSelectedTimeControl(x));
-		return;
 	};
 	const selectedTimeControl = useSelector(
 		(state) => state.timeControlsReducer.selectedTimeControl
 	);
-	console.log(selectedTimeControl)
 
 	return (
 		<div className="carrousel-container">
