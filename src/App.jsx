@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Carrousel from './components/Carrousel/Carrousel.jsx';
 import List from './components/List/List.jsx';
 import { useData } from './hooks/useData.js';
+import { useSelector } from 'react-redux';
 
 export const ALLOWED = [
 	'live_bullet',
@@ -13,6 +14,9 @@ export const ALLOWED = [
 
 export default function App() {
 	const { rankByTimeControl, isError, isLoading } = useData();
+	const selectedTimeControl = useSelector(
+		(state) => state.timeControlsReducer.selectedTimeControl
+	);
 
 	const [selectedCarrousel, setSelectedCarrousel] = useState(false);
 
@@ -44,7 +48,8 @@ export default function App() {
 							display: 'flex',
 						}}
 					>
-						{filteredRank.map(([key, values]) => {
+
+						{selectedTimeControl !== null ? filteredRank.filter(([key]) => key === selectedTimeControl).map(([key, values]) => {
 							return (
 								<div
 									style={{
@@ -60,7 +65,24 @@ export default function App() {
 									))}
 								</div>
 							);
-						})}{' '}
+						}) : filteredRank.map(([key, values]) => {
+							return (
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'column',
+									}}
+								>
+									{key}
+									{values.map((x) => (
+										<p>
+											{x.name} - {x.score}
+										</p>
+									))}
+								</div>
+							);
+						})}
+
 					</div>
 				</div>
 			</div>
