@@ -23,6 +23,7 @@ import {
 	prev,
 	next,
 	setSelectedTimeControl,
+	reset,
 } from '../../DataManagement/reducers/timeControlsReducer';
 
 import { ALLOWED } from '../../App.jsx';
@@ -47,24 +48,31 @@ const Carrousel = () => {
 	const selectedTimeControl = useSelector(
 		(state) => state.timeControlsReducer.selectedTimeControl
 	);
+	console.log(selectedTimeControl)
 
 	return (
-		<div>
-			<button
-				onClick={() => {
-					dispatch(prev())
-					handleSelectTimeControl(current);
-				}}>
-				{'<'}
-			</button>
-			Carrousel : {selectedTimeControl}
-			<button
-				onClick={() => {
-					dispatch(next())
-					handleSelectTimeControl(current);
-				}}>
-				{'>'}
-			</button>
+		<div className="carrousel-container">
+			<div className='carrousel'>
+				<button
+					className='carrousel-button'
+					onClick={() => {
+						dispatch(prev())
+						handleSelectTimeControl(current);
+					}}>
+					{'<'}
+				</button>
+				Carrousel : {selectedTimeControl ?? 'All'}
+				<button
+					onClick={() => {
+						dispatch(next())
+						handleSelectTimeControl(current);
+					}}>
+					{'>'}
+				</button>
+			</div>
+			<div className='carrousel-reset-button-container'>
+				<button className='carrousel-reset-button' onClick={() => dispatch(reset())}>All</button>
+			</div>
 		</div>
 	);
 };
