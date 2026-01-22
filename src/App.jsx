@@ -26,20 +26,22 @@ export default function App() {
 
 	return (
 		<main className='app'>
-			<h1>Classement</h1>
-			{
-				selectedCarrousel ? (
-					<Carrousel />
-				) : (
-					<List />
-				)
-			}
+			<div className="header">
+				<div>
+					<h1>Classement</h1>
+					{
+						selectedCarrousel ? (
+							<Carrousel />
+						) : (
+							<List />
+						)
+					}
 
-			<button onClick={() => setSelectedCarrousel(!selectedCarrousel)}>
-				Changer de vue: {selectedCarrousel ? 'Liste' : 'Carrousel'}
-			</button>
-
-
+					<button className='change-view' onClick={() => setSelectedCarrousel(!selectedCarrousel)}>
+						Changer de vue: {selectedCarrousel ? 'Liste' : 'Carrousel'}
+					</button>
+					</div>
+			</div>
 
 			<div className='content'>
 				<div className='card'>
@@ -55,9 +57,12 @@ export default function App() {
 									style={{
 										display: 'flex',
 										flexDirection: 'column',
+										width: '100%',
 									}}
 								>
-									{key}
+									<div className="table-header">
+										{key}
+									</div>
 									{values.map((x) => (
 										<p>
 											{x.name} - {x.score}
@@ -71,12 +76,15 @@ export default function App() {
 									style={{
 										display: 'flex',
 										flexDirection: 'column',
+										width: '100%',
 									}}
 								>
-									{key}
+									<div className="table-header">
+										{key}
+									</div>
 									{values.map((x) => (
 										<p>
-											{x.name} - {x.score}
+											{x.username} - {x.score}
 										</p>
 									))}
 								</div>

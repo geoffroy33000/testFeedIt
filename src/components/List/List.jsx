@@ -19,7 +19,7 @@
 // ------------------------------------------------- Styles & Assets ---------------------------------------------------
 import { useSelector, useDispatch } from 'react-redux';
 import './styles.scss';
-import { setSelectedTimeControl } from '../../DataManagement/reducers/timeControlsReducer';
+import { reset, setSelectedTimeControl } from '../../DataManagement/reducers/timeControlsReducer';
 // ---------------------------------------------------------------------------------------------------------------------
 
 const List = () => {
@@ -35,8 +35,9 @@ const List = () => {
 		<div className='list'>
 			Liste :{' '}
 			{timeControls.map((x) => (
-				<button onClick={() => handleSelectTimeControl(x)}>{x}</button>
+				<button onClick={() => handleSelectTimeControl(x)}>{x.replace('_', ' ')}</button>
 			))}
+			<button onClick={() => dispatch(reset())}>All</button>
 		</div>
 	);
 };

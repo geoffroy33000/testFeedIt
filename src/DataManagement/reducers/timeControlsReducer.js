@@ -36,10 +36,13 @@ export const timeControlsSlice = createSlice({
 			if (len === 0) return;
 			state.selectedIndex = (state.selectedIndex + 1) % len;
 		},
+		reset() {
+			return initialState;
+		},
 	},
 });
 
-export const { setSelectedTimeControl, setTimeControls, next,prev } =
+export const { setSelectedTimeControl, setTimeControls, next, prev, reset } =
 	timeControlsSlice.actions;
 
 export default timeControlsSlice.reducer;
