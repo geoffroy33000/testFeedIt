@@ -5,6 +5,17 @@ import { useData } from './hooks/useData.js';
 export default function App() {
 	const { rankByTimeControl, isError, isLoading } = useData();
 
+	const ALLOWED = [
+		'live_bullet',
+		'live_blitz',
+		'live_rapid',
+		'daily',
+		'tactics',
+	];
+
+	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
+	console.log(filteredRank);
+
 	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
 	if (isError) return <>Erreur de chargement des données</>;
 	return (
@@ -21,7 +32,7 @@ export default function App() {
 							display: 'flex',
 						}}
 					>
-						{rankByTimeControl.map(([key, values]) => {
+						{filteredRank.map(([key, values]) => {
 							return (
 								<div
 									style={{
