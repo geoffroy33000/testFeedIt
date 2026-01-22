@@ -13,10 +13,11 @@ export default function App() {
 		'tactics',
 	];
 
-	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
 
 	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
 	if (isError) return <>Erreur de chargement des données</>;
+	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
+
 	return (
 		<main className='app'>
 			<h1>Classement</h1>
