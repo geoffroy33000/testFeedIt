@@ -14,7 +14,6 @@ export default function App() {
 	];
 
 	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
-	console.log(filteredRank);
 
 	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
 	if (isError) return <>Erreur de chargement des données</>;
