@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import Carrousel from './components/Carrousel/Carrousel.jsx';
 import List from './components/List/List.jsx';
 import { useData } from './hooks/useData.js';
@@ -13,6 +14,8 @@ export const ALLOWED = [
 export default function App() {
 	const { rankByTimeControl, isError, isLoading } = useData();
 
+	const [selectedCarrousel, setSelectedCarrousel] = useState(false);
+
 	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
 	if (isError) return <>Erreur de chargement des données</>;
 	const filteredRank = rankByTimeControl.filter(([key]) => ALLOWED.includes(key));
@@ -20,9 +23,19 @@ export default function App() {
 	return (
 		<main className='app'>
 			<h1>Classement</h1>
+			{
+				selectedCarrousel ? (
+					<Carrousel />
+				) : (
+					<List />
+				)
+			}
 
-			<Carrousel />
-			<List />
+			<button onClick={() => setSelectedCarrousel(!selectedCarrousel)}>
+				Changer de vue: {selectedCarrousel ? 'Liste' : 'Carrousel'}
+			</button>
+
+
 
 			<div className='content'>
 				<div className='card'>
