@@ -41,7 +41,6 @@ const Carrousel = () => {
 	const current = allowedTimeControls[selectedIndex] || allowedTimeControls[0];
 	const handleSelectTimeControl = (x) => {
 		dispatch(setSelectedTimeControl(x));
-		return;
 	};
 	const selectedTimeControl = useSelector(
 		(state) => state.timeControlsReducer.selectedTimeControl
