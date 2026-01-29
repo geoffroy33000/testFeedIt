@@ -7,8 +7,7 @@
 body {
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background: #0f172a;
-	color: #e2e8f0;
+
 }
 
 .app {
@@ -17,4 +16,23 @@ body {
 	display: grid;
 	gap: 24px;
 	margin: 0 auto;
+
+}
+
+.dark {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.light {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.theme-toggle-button {
+    position: sticky;
+    top: 8px;
+    right: 8px;
+    width: 10%;
+    height: 32px;
 }

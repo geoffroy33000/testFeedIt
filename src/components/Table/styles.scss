@@ -12,12 +12,19 @@
 }
 
 .card {
-  background: #1e293b;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
   display: flex;
   width: 80%;
+}
+
+.card--dark{
+  background: #1e293b;
+}
+
+.card--light {
+  background: #f1f5f9;
 }
 
 .card--selected {
@@ -32,10 +39,17 @@
     font-weight: 600;
     text-align: center;
     padding: 8px 12px;
-    border-bottom: 1px solid white;
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.table-subtitle-header--dark {
+  border-bottom: 1px solid white;
+}
+
+.table-subtitle-header--light {
+  border-bottom: 1px solid black;
 }
 
 .table-content {
@@ -51,6 +65,10 @@
   width: 100%;
 }
 
-.table-content:not(:last-child) {
+.table-content--dark:not(:last-child) {
     border-right: 2px solid white;
+}
+
+.table-content--light:not(:last-child) {
+  border-right: 2px solid black;
 }
