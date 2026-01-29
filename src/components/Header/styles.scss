@@ -1,0 +1,29 @@
+.header {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.change-view {
+  display: flex;
+  margin: 24px auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 24px
+
+}
+
+button:hover {
+  background: #22d3ee;
+}

@@ -26,8 +26,9 @@ import {
 	reset,
 } from '../../DataManagement/reducers/timeControlsReducer';
 
-import './styles.scss';
 import { useActions } from '../../hooks/useActions.js';
+
+import './styles.scss';
 // ---------------------------------------------------------------------------------------------------------------------
 
 const Carrousel = () => {
@@ -53,7 +54,9 @@ const Carrousel = () => {
 					}}>
 					{'<'}
 				</button>
-				Carrousel : {selectedTimeControl ?? 'All'}
+				<div className='carrousel-time-control'>
+					Carrousel : {selectedTimeControl ?? 'All'}
+				</div>
 				<button
 					onClick={() => {
 						dispatch(next())
