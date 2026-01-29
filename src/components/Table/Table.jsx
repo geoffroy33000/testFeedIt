@@ -1,13 +1,14 @@
 import { useData } from '../../hooks/useData.js';
 import { useActions } from '../../hooks/useActions.js';
 import './styles.scss';
+import Spinner from '../Spinner/Spinner.jsx';
 
 const Table = () => {
 	const { rankByTimeControl, isError, isLoading } = useData();
 
 	const { selectedTimeControl, allowedTimeControls } = useActions();
 
-	if (isLoading) return <>Recherche des meilleurs joueurs...</>;
+	if (isLoading) return <Spinner/>;
 	if (isError) return <>Erreur de chargement des données</>;
 
 	const filteredRank = rankByTimeControl.filter(([key]) => allowedTimeControls.includes(key));
