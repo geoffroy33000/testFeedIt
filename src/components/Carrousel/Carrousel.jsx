@@ -17,7 +17,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------- Styles & Assets ---------------------------------------------------
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
 	prev,
@@ -27,24 +27,20 @@ import {
 } from '../../DataManagement/reducers/timeControlsReducer';
 
 import './styles.scss';
+import { useActions } from '../../hooks/useActions.js';
 // ---------------------------------------------------------------------------------------------------------------------
 
 const Carrousel = () => {
 	const dispatch = useDispatch();
-	const selectedIndex = useSelector(
-		(state) => state.timeControlsReducer?.selectedIndex ?? 0
-	);
-	const allowedTimeControls = useSelector(
-		(state) => state.timeControlsReducer.timeControls
-	);
+
+	const {allowedTimeControls} = useActions();
+
+	const { selectedIndex, selectedTimeControl } = useActions();
 
 	const current = allowedTimeControls[selectedIndex] || allowedTimeControls[0];
 	const handleSelectTimeControl = (x) => {
 		dispatch(setSelectedTimeControl(x));
 	};
-	const selectedTimeControl = useSelector(
-		(state) => state.timeControlsReducer.selectedTimeControl
-	);
 
 	return (
 		<div className="carrousel-container">

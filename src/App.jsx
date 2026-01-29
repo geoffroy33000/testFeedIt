@@ -2,18 +2,13 @@ import {useState} from 'react';
 import Carrousel from './components/Carrousel/Carrousel.jsx';
 import List from './components/List/List.jsx';
 import { useData } from './hooks/useData.js';
-import { useSelector } from 'react-redux';
+import { useActions } from './hooks/useActions.js';
 
 
 export default function App() {
 	const { rankByTimeControl, isError, isLoading } = useData();
-	const selectedTimeControl = useSelector(
-		(state) => state.timeControlsReducer.selectedTimeControl
-	);
 
-	const allowedTimeControls = useSelector(
-		(state) => state.timeControlsReducer.timeControls
-	);
+	const { selectedTimeControl, allowedTimeControls } = useActions();
 
 	const [selectedCarrousel, setSelectedCarrousel] = useState(false);
 

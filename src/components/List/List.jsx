@@ -17,16 +17,17 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------- Styles & Assets ---------------------------------------------------
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './styles.scss';
 import { reset, setSelectedTimeControl } from '../../DataManagement/reducers/timeControlsReducer';
+import { useActions } from '../../hooks/useActions.js';
 // ---------------------------------------------------------------------------------------------------------------------
 
 const List = () => {
 	const dispatch = useDispatch();
-	const timeControls = useSelector(
-		(state) => state.timeControlsReducer.timeControls
-	);
+
+	const { timeControls} = useActions();
+
 	const handleSelectTimeControl = (x) => {
 		dispatch(setSelectedTimeControl(x));
 		return;
