@@ -29,6 +29,7 @@ import {
 import { useActions } from '../../hooks/useActions.js';
 
 import './styles.scss';
+import Button from '../Button/Button.jsx';
 // ---------------------------------------------------------------------------------------------------------------------
 
 const Carrousel = () => {
@@ -46,24 +47,23 @@ const Carrousel = () => {
 	return (
 		<div className="carrousel-container">
 			<div className='carrousel'>
-				<button
-					className='carrousel-button'
+				<Button
 					onClick={() => {
 						dispatch(prev())
 						handleSelectTimeControl(current);
-					}}>
-					{'<'}
-				</button>
+					}}
+					children={'<'}
+				/>
 				<div className='carrousel-time-control'>
 					Carrousel : {selectedTimeControl ?? 'All'}
 				</div>
-				<button
+				<Button
 					onClick={() => {
 						dispatch(next())
 						handleSelectTimeControl(current);
-					}}>
-					{'>'}
-				</button>
+					}}
+					children={'>'}
+				/>
 			</div>
 			<div className='carrousel-reset-button-container'>
 				<button className='carrousel-reset-button' onClick={() => dispatch(reset())}>All</button>
